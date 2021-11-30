@@ -61,7 +61,7 @@ export default function Index({ getAllCounties }) {
                 signOut();
                 user = null;
               }}
-            />
+            >Sign out here 😢</Button>
           </div>
         ) : showLogin ? (
           <Signup
