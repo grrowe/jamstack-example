@@ -54,7 +54,7 @@ const Details = ({
                 toast({
                   id: toastId,
                   title: `Thanks you for signing up, ${values.firstName}!`,
-                  description: `You will be promted to login! 😎`,
+                  description: `please check your email to confirm! 😎`,
                   status: 'success',
                   duration: 9000,
                   isClosable: true

@@ -16,7 +16,7 @@ import Signup from '../src/signup';
 
 export default function Index({ getAllCounties }) {
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
-  const user = supabase.auth.user();
+  const [user, setUser] = useState(supabase.auth.user());
   const [countries, setCountries] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   useEffect(() => {
@@ -27,6 +27,9 @@ export default function Index({ getAllCounties }) {
       }).then((data) => setCountries(data.data));
     }
   }, [countries, setCountries, getAllCounties]);
+  useEffect(() => {
+    setUser(supabase.auth.user());
+  }, [supabase.auth]);
   const { toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.50', 'whiteAlpha.50');
   const secondaryTextColor = useColorModeValue('gray.600', 'gray.400');
@@ -36,6 +39,7 @@ export default function Index({ getAllCounties }) {
   };
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
+    console.log(error);
   };
   console.log(user);
 
@@ -59,9 +63,11 @@ export default function Index({ getAllCounties }) {
               label="Sign out here 😢"
               onClick={() => {
                 signOut();
-                user = null;
+                setUser(null);
               }}
-            >Sign out here 😢</Button>
+            >
+              Sign out here 😢
+            </Button>
           </div>
         ) : showLogin ? (
           <Signup
