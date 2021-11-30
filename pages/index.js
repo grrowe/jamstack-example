@@ -39,7 +39,6 @@ export default function Index({ getAllCounties }) {
   };
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
-    console.log(error);
   };
   console.log(user);
 
@@ -56,7 +55,7 @@ export default function Index({ getAllCounties }) {
         py={[0, 10, 20]}
         direction={{ base: 'column-reverse', md: 'row' }}
       >
-        {user ? (
+        {user?.id ? (
           <div>
             You are logged in, peep the console for your account details
             <Button
