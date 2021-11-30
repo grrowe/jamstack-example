@@ -16,7 +16,8 @@ import Signup from '../src/signup';
 
 export default function Index({ getAllCounties }) {
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
-  const [user, setUser] = useState(supabase.auth.user());
+  let user = supabase.auth.user()
+  // const [user, setUser] = useState(supabase.auth.user());
   const [countries, setCountries] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   useEffect(() => {
@@ -62,7 +63,8 @@ export default function Index({ getAllCounties }) {
               label="Sign out here 😢"
               onClick={() => {
                 signOut();
-                setUser(null);
+                // setUser(null);
+                user = null
               }}
             >
               Sign out here 😢
