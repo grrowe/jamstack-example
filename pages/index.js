@@ -64,7 +64,7 @@ export default function Index({ getAllCounties }) {
               onClick={() => {
                 signOut();
                 // setUser(null);
-                user = null
+                location.reload();
               }}
             >
               Sign out here 😢
