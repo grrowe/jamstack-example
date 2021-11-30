@@ -27,9 +27,9 @@ export default function Index({ getAllCounties }) {
       }).then((data) => setCountries(data.data));
     }
   }, [countries, setCountries, getAllCounties]);
-  useEffect(() => {
-    setUser(supabase.auth.user());
-  }, [supabase.auth]);
+  // useEffect(() => {
+  //   setUser(supabase.auth.user());
+  // }, []);
   const { toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.50', 'whiteAlpha.50');
   const secondaryTextColor = useColorModeValue('gray.600', 'gray.400');
