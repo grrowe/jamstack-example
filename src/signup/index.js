@@ -50,7 +50,7 @@ const Details = ({
           </VStack>
           <form
             onSubmit={handleSubmit((values) => {
-              if (!toast.isActive(toastId) && isLogin)
+              if (!toast.isActive(toastId))
                 toast({
                   id: toastId,
                   title: `Thanks you for signing up, ${values.firstName}!`,
