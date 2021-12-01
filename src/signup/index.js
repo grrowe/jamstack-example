@@ -34,7 +34,7 @@ const Details = ({
       {!isLogin ? (
         <React.Fragment>
           <VStack spacing={3} alignItems="flex-start">
-            <Heading size="2xl">Signup</Heading>
+            <Heading size="2xl">Hey class!!!</Heading>
             <Text>
               If you already have an account, click here to{' '}
               <span
