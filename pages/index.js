@@ -8,16 +8,17 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { createClient } from '@supabase/supabase-js';
-const supabaseUrl = 'https://rexkbdpceoggwbmramxo.supabase.co';
-const supabaseAnonKey =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYxOTk3OTg3MSwiZXhwIjoxOTM1NTU1ODcxfQ.cJkduXKK11qwHhyWJnmKoBDF5Hut1scn-DbN77PGrDk';
+
+// THESE ARE BETTER PUT INTO A ENV VARIABLE, BUT FOR SIMPLICITY I PUT THEM HERE
+const supabaseUrl = 'YOUR SUPABASE URL HERE';
+const supabaseAnonKey = "YOUR ANON KEY HERE"
+
 import Nav from '../src/nav';
 import Signup from '../src/signup';
 
 export default function Index({ getAllCounties }) {
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
   let user = supabase.auth.user()
-  // const [user, setUser] = useState(supabase.auth.user());
   const [countries, setCountries] = useState([]);
   const [showLogin, setShowLogin] = useState(false);
   useEffect(() => {
@@ -28,9 +29,7 @@ export default function Index({ getAllCounties }) {
       }).then((data) => setCountries(data.data));
     }
   }, [countries, setCountries, getAllCounties]);
-  // useEffect(() => {
-  //   setUser(supabase.auth.user());
-  // }, []);
+ 
   const { toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.50', 'whiteAlpha.50');
   const secondaryTextColor = useColorModeValue('gray.600', 'gray.400');
